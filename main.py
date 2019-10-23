@@ -27,8 +27,8 @@ for sub_dir1 in os.listdir(data1_dir):
         # print(file_path)
         net = Network(file_path)
         alg = TLBO(net)
-        # if alg.gene_size < 100:
-        #     continue
+        if alg.gene_size < 100:
+            continue
         best_std = alg.loop()
         # print(TLBO.print_best(alg, best))
         best = copy.copy(best_std)
