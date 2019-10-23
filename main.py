@@ -7,13 +7,13 @@ import copy
 from TLBO import TLBO
 from Network import Network
 
-<<<<<<< HEAD
-data1_dir = os.getcwd() + '\\DataICC\\Sen1'
-data2_dir = os.getcwd() + '\\ResultICC\\Sen1'
-=======
+# <<<<<<< HEAD
+# data1_dir = os.getcwd() + '\\DataICC\\Sen1'
+# data2_dir = os.getcwd() + '\\ResultICC\\Sen1'
+# =======
 data1_dir = os.getcwd() + '/DataICC/Sen1'
 data2_dir = os.getcwd() + '/ResultICC/Sen1'
->>>>>>> de629cf682ca0fd65605642c77f213af86bb6fbd
+# >>>>>>> de629cf682ca0fd65605642c77f213af86bb6fbd
 # print(data2_dir)
 workbook = writer.Workbook('Result.xlsx')
 worksheet = workbook.add_worksheet()
