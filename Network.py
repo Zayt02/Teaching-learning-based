@@ -108,6 +108,7 @@ class Network:
             path_length += self.distance_matrix[prev, i]
             self.moving_time[i] = self.distance_matrix[prev, i] / self.mc.v
             prev = i
+        path_length += self.distance_matrix[prev, 0]
         traveling_energy = path_length * self.mc.pm / self.mc.v
         self.mc.energy -= traveling_energy
         charging_energy = self.mc.energy

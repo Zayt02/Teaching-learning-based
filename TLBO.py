@@ -44,8 +44,8 @@ class TLBO:
     def get_fitness(self, student):
         return self.net.get_fitness(student.gene)
 
-    def print_best(TLBO, student):
-        return TLBO.net.get_fitness(student.gene, True)
+    def print_best(alg, student):
+        return alg.net.get_fitness(student.gene, True)
 
     def set_class_fitness(self):
         for i in range(self.class_size):

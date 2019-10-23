@@ -19,13 +19,15 @@ for sub_dir1 in os.listdir(data1_dir):
     des2 = [join(data2_dir, sub_dir1, f) for f in os.listdir(join(data2_dir, sub_dir1))]
     file_name = os.listdir(join(data2_dir, sub_dir1))
     offset = len(des1)
-    rows += offset
+    row = 0
     for i in range(offset):
         file_path = [des1[i], des2[i]]
         start = time.time()
         # print(file_path)
         net = Network(file_path)
         alg = TLBO(net)
+        # if alg.gene_size < 100:
+        #     continue
         best_std = alg.loop()
         # print(TLBO.print_best(alg, best))
         best = copy.copy(best_std)
@@ -43,16 +45,19 @@ for sub_dir1 in os.listdir(data1_dir):
             # print(TLBO.print_best(alg, best))
         print("Best: ", TLBO.print_best(alg, best))
         print("Worst: ", TLBO.print_best(alg, worst))
-        avg = round(avg/20, 1)
-        time_len = round((time.time() - start) / 60, 2)
-        for row in range(rows - offset, rows):
-            worksheet.write(row, 0, file_name[i])
-            worksheet.write(row, 1, best.fitness[0])
-            worksheet.write(row, 2, best.fitness[1])
-            worksheet.write(row, 3, worst.fitness[0])
-            worksheet.write(row, 4, worst.fitness[1])
-            worksheet.write(row, 5, avg)
-            worksheet.write(row, 6, time_len)
+        avg = round(avg/20, 2)
+        time_len = round(time.time() - start, 2)
+
+        worksheet.write(row, 0, file_name[i])
+        worksheet.write(row, 1, best.fitness[0])
+        worksheet.write(row, 2, round(best.fitness[1], 2))
+        worksheet.write(row, 3, worst.fitness[0])
+        worksheet.write(row, 4, round(worst.fitness[1], 2))
+        worksheet.write(row, 5, avg)
+        worksheet.write(row, 6, time_len)
+        row += 1
+        # break
+    # break
 
 workbook.close()
 
