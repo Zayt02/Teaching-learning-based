@@ -47,8 +47,8 @@ class Network:
             if energy[node] < self.min_e:
                 self.dead[node] = True
                 continue
-            charging_time = min((self.max_e - energy[node]) / self.mc.p, solution[i] * self.total_time)
-            energy[node] += charging_time * self.mc.p
+            charging_time = min((self.max_e - energy[node]) / (self.mc.p - self.p[node]), solution[i] * self.total_time)
+            energy[node] += charging_time * (self.mc.p - self.p[node])
             time += charging_time
             self.last_charging_time[node] = time
 
