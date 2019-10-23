@@ -7,8 +7,9 @@ import copy
 from TLBO import TLBO
 from Network import Network
 
-data1_dir = 'DataICC\\Sen1'
-data2_dir = 'ResultICC\\Sen1'
+data1_dir = os.getcwd() + '\\DataICC\\Sen1'
+data2_dir = os.getcwd() + '\\ResultICC\\Sen1'
+# print(data2_dir)
 workbook = writer.Workbook('Result.xlsx')
 worksheet = workbook.add_worksheet()
 
